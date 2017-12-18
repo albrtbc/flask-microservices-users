@@ -134,10 +134,10 @@ class TestUserService(BaseTestCase):
             self.assertEqual(len(data['data']['users']), 2)
             self.assertTrue('created_at' in data['data']['users'][0])
             self.assertTrue('created_at' in data['data']['users'][1])
-            self.assertIn('albert', data['data']['users'][0]['username'])
+            self.assertIn('albert', data['data']['users'][1]['username'])
             self.assertIn(
-                    'albert@rbit.io', data['data']['users'][0]['email'])
-            self.assertIn('fran', data['data']['users'][1]['username'])
+                    'albert@rbit.io', data['data']['users'][1]['email'])
+            self.assertIn('fran', data['data']['users'][0]['username'])
             self.assertIn(
-                    'fran@rbit.io', data['data']['users'][1]['email'])
+                    'fran@rbit.io', data['data']['users'][0]['email'])
             self.assertIn('success', data['status'])
