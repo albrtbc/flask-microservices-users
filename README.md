@@ -93,5 +93,23 @@ Then, you can connect to db and run SQL queries:
 # select * from users;
 ```
 
+### Environment variables
 
+```bash
+$ source env/bin/activate
+(env)$ export REACT_APP_USERS_SERVICE_URL=http://localhost 
+(env)$ export APP_SETTINGS=project.config.DevelopmentConfig
+(env)$ export DATABASE_URL=postgres://postgres:postgres@localhost:5432/users_dev
+(env)$ export DATABASE_TEST_URL=postgres://postgres:postgres@localhost:5432/users_test
+(env)$ python manage.py test
+```
 
+### Flask Migrator
+
+Change the model and migrate:
+
+```bash
+(env)$ python manage.py db init
+(env)$ python manage.py db migrate
+(env)$ python manage.py db upgrade
+```
