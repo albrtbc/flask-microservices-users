@@ -1,4 +1,4 @@
-# project/api/views.py
+# project/api/users.py
 
 from sqlalchemy import exc
 from flask import Blueprint, jsonify, request, render_template

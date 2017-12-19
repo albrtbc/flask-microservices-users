@@ -93,7 +93,7 @@ Then, you can connect to db and run SQL queries:
 # select * from users;
 ```
 
-### Environment variables
+### Environment variables development environment
 
 ```bash
 $ source env/bin/activate
@@ -101,6 +101,7 @@ $ source env/bin/activate
 (env)$ export APP_SETTINGS=project.config.DevelopmentConfig
 (env)$ export DATABASE_URL=postgres://postgres:postgres@localhost:5432/users_dev
 (env)$ export DATABASE_TEST_URL=postgres://postgres:postgres@localhost:5432/users_test
+(env)$ export SECRET_KEY=my_precious
 (env)$ python manage.py test
 ```
 
