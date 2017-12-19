@@ -114,3 +114,20 @@ Change the model and migrate:
 (env)$ python manage.py db migrate
 (env)$ python manage.py db upgrade
 ```
+
+### Setting up local environment
+
+1. Install postgres
+2. Set default password to postgres
+```bash
+$ sudo -u postgres psql
+$ \password postgres
+$ \q
+```
+3. Uninstall and install psycopg2
+```bash
+$ pip uninstall psycopg2
+$ pip install psycopg2 --upgrade
+```
+4. Set environment variables
+5. Run manage.py recreate_db seed_db & test / cov
