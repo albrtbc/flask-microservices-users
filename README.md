@@ -107,12 +107,27 @@ python manage.py test
 
 ### Flask Migrator
 
-Change the model and migrate:
+#### Change the model and migrate:
 
 ```bash
-python manage.py db init
-python manage.py db migrate
-python manage.py db upgrade
+$ python manage.py db init
+$ python manage.py db migrate
+$ python manage.py db upgrade
+```
+
+#### Start local flask
+
+```bash
+$ python manage.py runserver
+```
+
+### React
+
+#### Start local react
+
+```bash
+$ export REACT_APP_USERS_SERVICE_URL=http://127.0.0.1:5000
+$ npm start
 ```
 
 ### Setting up local environment
