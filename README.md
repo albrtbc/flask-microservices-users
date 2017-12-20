@@ -97,12 +97,12 @@ Then, you can connect to db and run SQL queries:
 
 ```bash
 $ source env/bin/activate
-(env)$ export REACT_APP_USERS_SERVICE_URL=http://localhost 
-(env)$ export APP_SETTINGS=project.config.DevelopmentConfig
-(env)$ export DATABASE_URL=postgres://postgres:postgres@localhost:5432/users_dev
-(env)$ export DATABASE_TEST_URL=postgres://postgres:postgres@localhost:5432/users_test
-(env)$ export SECRET_KEY=my_precious
-(env)$ python manage.py test
+export REACT_APP_USERS_SERVICE_URL=http://localhost 
+export APP_SETTINGS=project.config.DevelopmentConfig
+export DATABASE_URL=postgres://postgres:postgres@localhost:5432/users_dev
+export DATABASE_TEST_URL=postgres://postgres:postgres@localhost:5432/users_test
+export SECRET_KEY=my_precious
+python manage.py test
 ```
 
 ### Flask Migrator
@@ -110,9 +110,9 @@ $ source env/bin/activate
 Change the model and migrate:
 
 ```bash
-(env)$ python manage.py db init
-(env)$ python manage.py db migrate
-(env)$ python manage.py db upgrade
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
 ```
 
 ### Setting up local environment
