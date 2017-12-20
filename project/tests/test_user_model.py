@@ -1,6 +1,8 @@
 # project/tests/test_user_model.py
 
 
+import json
+
 from sqlalchemy.exc import IntegrityError
 
 from project import db
@@ -18,6 +20,7 @@ class TestUserModel(BaseTestCase):
         self.assertTrue(user.password)
         self.assertTrue(user.active)
         self.assertTrue(user.created_at)
+        self.assertTrue(user.admin == False)
 
     def test_add_user_duplicate_username(self):
         add_user('justatest', 'test@test.com', 'testpw')
@@ -54,3 +57,35 @@ class TestUserModel(BaseTestCase):
         auth_token = user.encode_auth_token(user.id)
         self.assertTrue(isinstance(auth_token, bytes))
         self.assertTrue(User.decode_auth_token(auth_token), user.id)
+
+    def test_add_user_not_admin(self):
+        add_user('test', 'test@test.com', 'test')
+        with self.client:
+            # user login
+            resp_login = self.client.post(
+                    '/auth/login',
+                    data=json.dumps(dict(
+                        email='test@test.com',
+                        password='test'
+                        )),
+                    content_type='application/json'
+                    )
+            response = self.client.post(
+                    '/users',
+                    data=json.dumps(dict(
+                        username='michael',
+                        email='michael@realpython.com',
+                        password='test'
+                        )),
+                    content_type='application/json',
+                    headers=dict(
+                        Authorization='Bearer ' + json.loads(
+                            resp_login.data.decode()
+                            )['auth_token']
+                        )
+                    )
+            data = json.loads(response.data.decode())
+            self.assertTrue(data['status'] == 'error')
+            self.assertTrue(
+                    data['message'] == 'You do not have permission to do that.')
+            self.assertEqual(response.status_code, 401)
