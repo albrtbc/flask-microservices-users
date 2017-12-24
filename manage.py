@@ -65,13 +65,13 @@ def seed_db():
     db.session.add(User(
         username='albert',
         email="albert@rbit.io",
-	password='test'
-	))
+        password='greaterthanten',
+        ))
     db.session.add(User(
         username='fran',
         email="fran@rbit.io",
-	password='test'
-	))
+        password='greaterthanten'
+        ))
     db.session.commit()
 
 
