@@ -234,18 +234,18 @@ class TestUserService(BaseTestCase):
                     content_type='application/json'
                     )
             response = self.client.post(
-                '/users',
-                data=json.dumps(dict(
-                    username='michael',
-                    email='michael@realpython.com')),
-                content_type='application/json',
-                headers=dict(
-                    Authorization='Bearer ' + json.loads(
-                        resp_login.data.decode()
-                        )['auth_token']
+                    '/users',
+                    data=json.dumps(dict(
+                        username='michael',
+                        email='michael@realpython.com')),
+                    content_type='application/json',
+                    headers=dict(
+                        Authorization='Bearer ' + json.loads(
+                            resp_login.data.decode()
+                            )['auth_token']
+                        )
                     )
-            )
-        data = json.loads(response.data.decode())
+            data = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 400)
         self.assertIn('Invalid payload.', data['message'])
         self.assertIn('fail', data['status'])

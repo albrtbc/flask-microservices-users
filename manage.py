@@ -12,12 +12,12 @@ from project.api.models import User
 
 
 COV = coverage.coverage(
-    branch=True,
-    include='project/*',
-    omit=[
-        'project/tests/*'
-    ]
-)
+        branch=True,
+        include='project/*',
+        omit=[
+            'project/tests/*'
+            ]
+        )
 COV.start()
 
 app = create_app()
